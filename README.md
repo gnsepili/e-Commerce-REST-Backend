@@ -2,7 +2,7 @@
 A backend application using Node.js, Express.js, MongoDB for an e-commerce App.
 
 **Avabilable API's are:** (TODO)
-- [ ] (Register a user)
+- [x] (Register a user)
 - [ ] (login a user)
 - [ ] (who am I)
 - [ ] (Add new product)
