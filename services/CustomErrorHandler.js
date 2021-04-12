@@ -7,7 +7,14 @@ class CustomErrorHandler extends Error {
 
     static alreadyExist(message) {
         return new CustomErrorHandler(409, message)
-    }
+    };
+    static userNotExist(message) {
+        return new CustomErrorHandler(401, message)
+    };
+    static wrongCredential(message) {
+        return new CustomErrorHandler(401, message)
+    };
+    
 }
 
 export default CustomErrorHandler;

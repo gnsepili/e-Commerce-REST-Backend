@@ -23,7 +23,7 @@ const registerController = {
             password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')).required(),
             repeat_password: Joi.ref('password')
         });
-        console.log(req.body)
+        // console.log(req.body);
         const {error} = registerSchema.validate(req.body);
         if(error){
             // throw error; simple error throw won't work with async
