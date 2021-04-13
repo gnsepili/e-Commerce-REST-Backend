@@ -14,6 +14,10 @@ class CustomErrorHandler extends Error {
     static wrongCredential(message) {
         return new CustomErrorHandler(401, message)
     };
+    static unAutherised(message='Unautherised user') {
+        console.log('unAutherised',message);
+        return new CustomErrorHandler(401, message)
+    };
     
 }
 
