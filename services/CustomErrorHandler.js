@@ -17,6 +17,10 @@ class CustomErrorHandler extends Error {
     static wrongCredential(message) {
         return new CustomErrorHandler(401, message)
     };
+    static serverError(message) {
+        return new CustomErrorHandler(500, message)
+    };
+    
     
 }
 
