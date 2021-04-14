@@ -1,8 +1,10 @@
 import Joi from 'joi';
 import bcrypt from 'bcrypt';
-import { User } from '../../models'
+import { User, RefreshToken } from '../../models'
 import CustomErrorHandler from '../../services/CustomErrorHandler';
 import Jwtservice from '../../services/JwtService';
+import {REFRESH_SECRET} from '../../config';
+
 
 const loginController={
     async login(req, res, next){
@@ -33,16 +35,42 @@ const loginController={
 
             // generate token
             const accessToken = Jwtservice.sign({_id:user._id, role: user.role});
+            const refreshToken = Jwtservice.sign({_id:user._id, role: user.role},'1y',REFRESH_SECRET);
+
+            await RefreshToken.create({token:refreshToken});
+            
 
             res.json({
-                accessToken
+                accessToken,
+                refreshToken
             });
 
         } catch (error) {
             return next(error);
         }
         
+    },
+    async logout(req, res,next){
+        //validation
+        const refreshSchema = Joi.object({
+            refresh_token: Joi.string().required()
+        });
+
+        const { error } = refreshSchema.validate(req.body);
+        
+        if(error){
+            return next(error);
+        }
+        try {
+            //delete token 
+            await RefreshToken.deleteOne({token:req.body.refresh_token});
+            
+        } catch (error) {
+            return next(new Error('Something went wrong in Db while loging out'));
+        }
+        res.json({status:1,message: "logout successfully"});
     }
+
    
 };
 export default loginController;

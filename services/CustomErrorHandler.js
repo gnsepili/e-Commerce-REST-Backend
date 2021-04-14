@@ -11,11 +11,10 @@ class CustomErrorHandler extends Error {
     static userNotExist(message) {
         return new CustomErrorHandler(401, message)
     };
-    static wrongCredential(message) {
+    static unAutherised(message) {
         return new CustomErrorHandler(401, message)
     };
-    static unAutherised(message='Unautherised user') {
-        console.log('unAutherised',message);
+    static wrongCredential(message) {
         return new CustomErrorHandler(401, message)
     };
     

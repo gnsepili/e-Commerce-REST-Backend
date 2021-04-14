@@ -5,13 +5,14 @@ A backend application using Node.js, Express.js, MongoDB for an e-commerce App.
 - [x] (Register a user)
 - [x] (login a user)
 - [x] (fetch user details after login)
-- [ ] (Refresh token)
-- [ ] (Logout)
+- [x] (Refresh token)
+- [x] (Logout)
 - [ ] (Add new product)
 - [ ] (Update product)
 - [ ] (Get all products)
 - [ ] (Get single products)
 - [ ] (Delete product)
+- [ ] (Swagger documentation & Hosting)
 
 ##Set up guide
 ```bash
